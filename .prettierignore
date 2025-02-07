@@ -1,0 +1,14 @@
+node_modules
+.pnp
+.pnp.cjs
+dist
+.output
+.nuxt
+*.log
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.idea
+.vscode
+.DS_Store
+.vscode

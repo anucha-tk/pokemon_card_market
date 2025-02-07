@@ -5,14 +5,45 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "lint": "yarn lint:eslint && yarn lint:prettier",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier . --check",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "prepare": "husky",
+    "commit": "cz"
   },
   "dependencies": {
     "nuxt": "^3.15.4",
     "vue": "latest",
     "vue-router": "latest"
   },
-  "packageManager": "pnpm@8.15.0+sha512.ea45517d5285d123eac02c3793505fa1fd6da90a2fc60d1e8d9e0c1e9292886ecfaff513f062b9d1cc8021bb8615033b1ac5bea3b2ee3fc165a6d7034bbe6b03"
+  "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@nuxt/eslint": "^1.0.1",
+    "commitlint": "^19.7.1",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix",
+      "prettier --config ./.prettierrc --write"
+    ],
+    "**/*.{css,scss,md,html,json}": [
+      "prettier --config ./.prettierrc --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
 }
