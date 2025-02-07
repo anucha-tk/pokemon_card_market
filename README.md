@@ -6,3 +6,5 @@
 # Stack
 
 - Nuxt
+- Tailwindcss
+- Shadcn-vue
