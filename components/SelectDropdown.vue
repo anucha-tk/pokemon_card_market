@@ -18,8 +18,8 @@
 
 <template>
   <Select id="menu_filter_set" v-model="model">
-    <SelectTrigger class="space-x-2 border-[#393C49] bg-[#1F1D2B]">
-      <SelectValue :placeholder="placeholder" class="text-sm text-white" />
+    <SelectTrigger class="space-x-2 border-[#393C49] dark:bg-[#1F1D2B]">
+      <SelectValue :placeholder="placeholder" class="text-sm dark:text-white" />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
