@@ -6,6 +6,7 @@
 # Stack
 
 - Nuxt
+- Pinia(State Management)
 - UI/CSS
   - Tailwindcss
   - Shadcn-vue
