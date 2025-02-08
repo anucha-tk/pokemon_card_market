@@ -11,4 +11,4 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
   css: ['~/src/index.css'],
-})
+});

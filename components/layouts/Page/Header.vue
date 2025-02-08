@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import { Input } from '@/components/ui/input'
-  import { Separator } from '@/components/ui/separator'
+  import { Input } from '@/components/ui/input';
+  import { Separator } from '@/components/ui/separator';
 
-  import { ShoppingBag, Search } from 'lucide-vue-next'
+  import { ShoppingBag, Search } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -18,7 +18,7 @@
             class="h-full w-44 border-[#393C49] pl-12 placeholder:text-sm placeholder:font-normal dark:bg-[#252735] placeholder:dark:text-[#ABBBC2]"
           />
           <span class="absolute inset-y-0 start-0 flex items-center justify-center p-3.5">
-            <Search class="size-5 text-muted-foreground" />
+            <Search class="size-5 text-white" />
           </span>
         </div>
         <div class="h-12 w-12">
