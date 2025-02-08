@@ -11,6 +11,9 @@ dependencies:
   '@nuxtjs/tailwindcss':
     specifier: 6.13.1
     version: 6.13.1
+  '@pinia/nuxt':
+    specifier: 0.9.0
+    version: 0.9.0(pinia@2.3.1)
   '@vueuse/core':
     specifier: ^12.5.0
     version: 12.5.0(typescript@5.7.3)
@@ -26,6 +29,9 @@ dependencies:
   nuxt:
     specifier: ^3.15.4
     version: 3.15.4(@types/node@22.13.1)(eslint@9.19.0)(typescript@5.7.3)(vite@6.1.0)
+  pinia:
+    specifier: ^2.3.0
+    version: 2.3.1(typescript@5.7.3)(vue@3.5.13)
   radix-vue:
     specifier: ^1.9.13
     version: 1.9.13(vue@3.5.13)
@@ -1677,6 +1683,18 @@ packages:
       '@parcel/watcher-win32-arm64': 2.5.1
       '@parcel/watcher-win32-ia32': 2.5.1
       '@parcel/watcher-win32-x64': 2.5.1
+    dev: false
+
+  /@pinia/nuxt@0.9.0(pinia@2.3.1):
+    resolution: {integrity: sha512-2yeRo7LeyCF68AbNeL3xu2h6uw0617RkcsYxmA8DJM0R0PMdz5wQHnc44KeENQxR/Mrq8T910XVT6buosqsjBQ==}
+    peerDependencies:
+      pinia: ^2.3.0
+    dependencies:
+      '@nuxt/kit': 3.15.4(magicast@0.3.5)
+      pinia: 2.3.1(typescript@5.7.3)(vue@3.5.13)
+    transitivePeerDependencies:
+      - magicast
+      - supports-color
     dev: false
 
   /@pkgjs/parseargs@0.11.0:
@@ -6043,6 +6061,23 @@ packages:
   /pify@2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  /pinia@2.3.1(typescript@5.7.3)(vue@3.5.13):
+    resolution: {integrity: sha512-khUlZSwt9xXCaTbbxFYBKDc/bWAGWJjOgvxETwkTN7KRm66EeT1ZdZj6i2ceh9sP2Pzqsbc704r2yngBrxBVug==}
+    peerDependencies:
+      typescript: '>=4.4.4'
+      vue: ^2.7.0 || ^3.5.11
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.6.4
+      typescript: 5.7.3
+      vue: 3.5.13(typescript@5.7.3)
+      vue-demi: 0.14.10(vue@3.5.13)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
     dev: false
 
   /pirates@4.0.6:

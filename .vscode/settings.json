@@ -5,6 +5,8 @@
         "Nuxt",
         "nuxtjs",
         "ptcgo",
-        "shadcn"
+        "selectedvalue",
+        "shadcn",
+        "tanstack"
     ]
 }
