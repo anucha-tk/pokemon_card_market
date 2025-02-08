@@ -6,5 +6,11 @@
 # Stack
 
 - Nuxt
-- Tailwindcss
-- Shadcn-vue
+- UI/CSS
+  - Tailwindcss
+  - Shadcn-vue
+- Theme switch Mode (Light, Dark, System)
+- Code Quality
+  - Lint-staged
+  - Commitlint
+  - Husky

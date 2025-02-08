@@ -10,4 +10,5 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
+  css: ['~/src/index.css'],
 })
