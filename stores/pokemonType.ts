@@ -1,31 +1,31 @@
 import { defineStore } from 'pinia';
 import { POKE_API } from '~/constants/api_constant';
 
-export const usePokemonRarity = defineStore('pokemon_rarities', {
+export const usePokemonType = defineStore('pokemon_types', {
   state: () => ({
-    rarity: '',
-    rarities: [] as string[],
+    type: '',
+    types: [] as string[],
     isLoading: false,
     error: null as string | null,
   }),
   actions: {
-    async fetchRarities() {
+    async fetchTypes() {
       this.isLoading = true;
       this.error = null;
 
       try {
-        const { data } = await $fetch<{ data: string[] }>(POKE_API.rarities);
+        const { data } = await $fetch<{ data: string[] }>(POKE_API.types);
         // TODO: remove slice
-        this.rarities = data.slice(0, 5);
+        this.types = data.slice(0, 5);
       } catch (error) {
-        this.error = 'Failed to fetch rarity';
+        this.error = 'Failed to fetch types';
         console.error(error);
       } finally {
         this.isLoading = false;
       }
     },
-    updateRarity(selectedRarity: string) {
-      this.rarity = selectedRarity;
+    updateType(selectedType: string) {
+      this.type = selectedType;
     },
   },
 });

@@ -1,16 +1,19 @@
 <script setup lang="ts">
   const pokemonSets = usePokemonSets();
   const pokemonRarity = usePokemonRarity();
+  const pokemonType = usePokemonType();
   const setNameOptions = ref<{ label: string; value: string }[]>([]);
   const setRaritiesOptions = ref<{ label: string; value: string }[]>([]);
-  // const type = ref('');
+  const setTypesOptions = ref<{ label: string; value: string }[]>([]);
 
   const selectedSet = ref('');
-  const selectedRarities = ref('');
+  const selectedRarity = ref('');
+  const selectedType = ref('');
 
   onBeforeMount(async () => {
     await pokemonSets.fetchSets();
     await pokemonRarity.fetchRarities();
+    await pokemonType.fetchTypes();
   });
 
   watch(
@@ -27,6 +30,13 @@
     },
     { immediate: true }
   );
+  watch(
+    () => pokemonType.types,
+    (newTypes) => {
+      setTypesOptions.value = newTypes.map((e) => ({ label: e, value: e }));
+    },
+    { immediate: true }
+  );
 
   watch(
     () => selectedSet.value,
@@ -36,9 +46,16 @@
     { immediate: true }
   );
   watch(
-    () => selectedRarities.value,
+    () => selectedRarity.value,
     (newValue) => {
       pokemonRarity.updateRarity(newValue);
+    },
+    { immediate: true }
+  );
+  watch(
+    () => selectedType.value,
+    (newValue) => {
+      pokemonType.updateType(newValue);
     },
     { immediate: true }
   );
@@ -50,10 +67,11 @@
     <div id="menu_filter" class="flex space-x-4">
       <SelectDropdown v-model="selectedSet" :placeholder="'Set'" :options="setNameOptions" />
       <SelectDropdown
-        v-model="selectedRarities"
+        v-model="selectedRarity"
         :placeholder="'Rarity'"
         :options="setRaritiesOptions"
       />
+      <SelectDropdown v-model="selectedType" :placeholder="'Type'" :options="setTypesOptions" />
     </div>
   </article>
 </template>
