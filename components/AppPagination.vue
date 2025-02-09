@@ -34,6 +34,7 @@
     show-edges
     :default-page="pageQuery.page"
     class="flex justify-center"
+    :page="pageQuery.page"
   >
     <PaginationList v-slot="{ items }" class="flex items-center gap-1">
       <PaginationFirst @click="goToPage(1)" />

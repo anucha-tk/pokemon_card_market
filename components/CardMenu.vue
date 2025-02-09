@@ -21,18 +21,21 @@
     () => setStore.set,
     (newSet) => {
       filters.value.set = newSet ? `set.id:${newSet}` : '';
+      pageQuery.setPage(1);
     }
   );
   watch(
     () => rarityStore.rarity,
     (newRarity) => {
       filters.value.rarity = newRarity ? `rarity:"${newRarity}"` : '';
+      pageQuery.setPage(1);
     }
   );
   watch(
     () => typeStore.type,
     (newType) => {
       filters.value.type = newType ? `types:"${newType}"` : '';
+      pageQuery.setPage(1);
     }
   );
 
@@ -45,6 +48,7 @@
   watch(queryFilter, () => {
     refresh();
   });
+  // TODO: update count totalPage every request
 
   const totalCount = data.value?.totalCount || 0;
   const pageSize = data.value?.pageSize || 0;
