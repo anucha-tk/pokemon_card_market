@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-export const useFilters = defineStore('pokemon_rarities', {
+export const useFilters = defineStore('filters', {
   state: () => ({
     set: '',
     setsName: [] as string[],

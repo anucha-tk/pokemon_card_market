@@ -1,8 +1,20 @@
 <script setup lang="ts">
   import { Input } from '@/components/ui/input';
   import { Separator } from '@/components/ui/separator';
-
+  import { useDebounceFn } from '@vueuse/core';
   import { ShoppingBag, Search } from 'lucide-vue-next';
+
+  const search = ref('');
+  const filtersStore = useFilters();
+  const debouncedFn = useDebounceFn(() => {
+    filtersStore.updateSearch(search.value);
+  }, 2000);
+  watch(
+    () => search.value,
+    () => {
+      debouncedFn();
+    }
+  );
 </script>
 
 <template>
@@ -13,9 +25,10 @@
         <div id="search" class="relative hidden w-full max-w-sm items-center md:flex">
           <Input
             id="search"
-            type="text"
+            v-model="search"
+            type="search"
             placeholder="Search By Name"
-            class="h-full w-44 border-[#393C49] pl-12 placeholder:text-sm placeholder:font-normal dark:bg-[#252735] placeholder:dark:text-[#ABBBC2]"
+            class="h-full w-48 border-[#393C49] pl-12 placeholder:text-sm placeholder:font-normal dark:bg-[#252735] placeholder:dark:text-[#ABBBC2]"
           />
           <span class="absolute inset-y-0 start-0 flex items-center justify-center p-3.5">
             <Search class="size-5 dark:text-white" />

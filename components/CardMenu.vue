@@ -2,7 +2,7 @@
   import { POKE_API } from '~/constants/api_constant';
   const pageQuery = usePageQuery();
   const filterStore = useFilters();
-  const filters = ref({ set: '', rarity: '', type: '' });
+  const filters = ref({ name: '', set: '', rarity: '', type: '' });
 
   const queryFilter = computed(() => Object.values(filters.value).filter(Boolean).join(' '));
 
@@ -14,6 +14,13 @@
         q: queryFilter.value || undefined,
       },
     })
+  );
+  watch(
+    () => filterStore.search,
+    (newSearch) => {
+      filters.value.name = newSearch ? `name:${newSearch}` : '';
+      pageQuery.setPage(1);
+    }
   );
   watch(
     () => filterStore.set,
