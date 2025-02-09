@@ -3,8 +3,8 @@
   const { p } = defineProps<{
     p: Pokemon;
   }>();
-  const priceMarket = p.tcgplayer?.prices?.holofoil?.market || 'unknown';
-  const cardTotal = p.set.total || 'unknown';
+  const priceMarket = computed(() => p.tcgplayer?.prices?.holofoil?.market || 'unknown');
+  const cardTotal = computed(() => p.set.total || 'unknown');
 </script>
 
 <template>
