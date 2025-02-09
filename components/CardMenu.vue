@@ -1,9 +1,7 @@
 <script setup lang="ts">
   import { POKE_API } from '~/constants/api_constant';
   const pageQuery = usePageQuery();
-  const setStore = usePokemonSets();
-  const rarityStore = usePokemonRarity();
-  const typeStore = usePokemonType();
+  const filterStore = useFilters();
   const filters = ref({ set: '', rarity: '', type: '' });
 
   const queryFilter = computed(() => Object.values(filters.value).filter(Boolean).join(' '));
@@ -18,21 +16,21 @@
     })
   );
   watch(
-    () => setStore.set,
+    () => filterStore.set,
     (newSet) => {
       filters.value.set = newSet ? `set.id:${newSet}` : '';
       pageQuery.setPage(1);
     }
   );
   watch(
-    () => rarityStore.rarity,
+    () => filterStore.rarity,
     (newRarity) => {
       filters.value.rarity = newRarity ? `rarity:"${newRarity}"` : '';
       pageQuery.setPage(1);
     }
   );
   watch(
-    () => typeStore.type,
+    () => filterStore.type,
     (newType) => {
       filters.value.type = newType ? `types:"${newType}"` : '';
       pageQuery.setPage(1);

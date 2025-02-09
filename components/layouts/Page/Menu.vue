@@ -8,9 +8,7 @@
     TooltipTrigger,
   } from '@/components/ui/tooltip';
 
-  const pokemonSets = usePokemonSets();
-  const pokemonRarity = usePokemonRarity();
-  const pokemonTypes = usePokemonType();
+  const filterStore = useFilters();
 
   const pokemonSetOptions = useState<{ label: string; value: string }[]>('pokemonSets', () => []);
   const pokemonRaritiesOptions = useState<{ label: string; value: string }[]>(
@@ -31,48 +29,48 @@
   );
   pokemonSetOptions.value =
     setRes.data?.value?.data?.map((e) => ({ label: e.name || '', value: e.id || '' })) || [];
-  pokemonSets.updateSets(setRes.data?.value?.data?.map((e) => e.name || '').sort() || []);
+  filterStore.updateSets(setRes.data?.value?.data?.map((e) => e.name || '').sort() || []);
 
   const raritiesRes = await useAsyncData<{ data: string[] }>('pokemonRarities', () =>
     $fetch(POKE_API.rarities)
   );
   pokemonRaritiesOptions.value =
     raritiesRes.data.value?.data.map((e) => ({ label: e, value: e })) || [];
-  pokemonRarity.updateRarities(raritiesRes.data.value?.data.sort() || []);
+  filterStore.updateRarities(raritiesRes.data.value?.data.sort() || []);
 
   const typeRes = await useAsyncData<{ data: string[] }>('pokemonTypes', () =>
     $fetch(POKE_API.types)
   );
   pokemonTypesOptions.value = typeRes.data.value?.data.map((e) => ({ label: e, value: e })) || [];
-  pokemonTypes.updateTypes(typeRes.data.value?.data.sort() || []);
+  filterStore.updateTypes(typeRes.data.value?.data.sort() || []);
 
   watch(
     () => selectedSet.value,
     (newValue) => {
-      pokemonSets.updateSet(newValue);
+      filterStore.updateSet(newValue);
     },
     { immediate: true }
   );
   watch(
     () => selectedRarity.value,
     (newValue) => {
-      pokemonRarity.updateRarity(newValue);
+      filterStore.updateRarity(newValue);
     },
     { immediate: true }
   );
   watch(
     () => selectedType.value,
     (newValue) => {
-      pokemonTypes.updateType(newValue);
+      filterStore.updateType(newValue);
     },
     { immediate: true }
   );
-  const isFilter = computed(() => pokemonSets.set || pokemonTypes.type || pokemonRarity.rarity);
+  const isFilter = computed(() => filterStore.set || filterStore.type || filterStore.rarity);
 
   const resetFilters = () => {
-    pokemonSets.updateSet('');
-    pokemonRarity.updateRarity('');
-    pokemonTypes.updateType('');
+    filterStore.updateSet('');
+    filterStore.updateRarity('');
+    filterStore.updateType('');
 
     selectedSet.value = '';
     selectedRarity.value = '';
