@@ -62,9 +62,12 @@
 </script>
 
 <template>
-  <article id="menu" class="flex justify-between">
+  <article
+    id="menu"
+    class="flex flex-col items-start justify-between space-y-6 md:flex-row md:items-center md:space-y-0"
+  >
     <h1 class="text-lg font-semibold">Choose Card</h1>
-    <div id="menu_filter" class="flex space-x-4">
+    <div id="menu_filter" class="flex w-full items-center justify-between gap-2 md:w-fit">
       <SelectDropdown v-model="selectedSet" :placeholder="'Set'" :options="pokemonSetOptions" />
       <SelectDropdown
         v-model="selectedRarity"

@@ -1,4 +1,3 @@
-'use client'
 <script setup lang="ts">
   import {
     Select,
