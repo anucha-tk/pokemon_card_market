@@ -23,18 +23,20 @@
   const prevPage = () => {
     pageQuery.prevPage();
   };
+  const totalCount = computed(() => pageQuery.count);
+  const currPage = computed(() => pageQuery.page);
 </script>
 
 <template>
   <Pagination
     v-slot="{ page }"
-    :total="pageQuery.count"
+    :total="totalCount"
     :items-per-page="pageQuery.size"
     :sibling-count="1"
     show-edges
-    :default-page="pageQuery.page"
+    :default-page="currPage"
     class="flex justify-center"
-    :page="pageQuery.page"
+    :page="currPage"
   >
     <PaginationList v-slot="{ items }" class="flex items-center gap-1">
       <PaginationFirst @click="goToPage(1)" />

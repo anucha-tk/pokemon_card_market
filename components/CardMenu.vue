@@ -48,13 +48,19 @@
   watch(queryFilter, () => {
     refresh();
   });
-  // TODO: update count totalPage every request
 
-  const totalCount = data.value?.totalCount || 0;
-  const pageSize = data.value?.pageSize || 0;
-  pageQuery.setCount(totalCount);
-  pageQuery.setTotalPage(Math.ceil(totalCount / pageSize));
   const pokemons = ref(data.value?.data || []);
+
+  watch(
+    data,
+    () => {
+      const totalCount = data.value?.totalCount || 0;
+      const pageSize = data.value?.pageSize || 0;
+      pageQuery.setTotalPage(Math.ceil(totalCount / pageSize));
+      pageQuery.setCount(totalCount);
+    },
+    { immediate: true }
+  );
 
   watch(data, () => {
     pokemons.value = data.value?.data || [];
