@@ -22,8 +22,8 @@
     $fetch(POKE_API.setNames)
   );
   pokemonSetOptions.value =
-    setRes.data.value?.data.map((e) => ({ label: e.name, value: e.name })) || [];
-  pokemonSets.updateSets(setRes.data.value?.data.map((e) => e.name).sort() || []);
+    setRes.data?.value?.data?.map((e) => ({ label: e.name || '', value: e.name || '' })) || [];
+  pokemonSets.updateSets(setRes.data?.value?.data?.map((e) => e.name || '').sort() || []);
 
   const raritiesRes = await useAsyncData<{ data: string[] }>('pokemonRarities', () =>
     $fetch(POKE_API.rarities)

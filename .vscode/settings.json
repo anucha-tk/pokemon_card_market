@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "holofoil",
         "iconify",
         "lucide",
         "Nuxt",
@@ -8,6 +9,7 @@
         "ptcgo",
         "selectedvalue",
         "shadcn",
-        "tanstack"
+        "tanstack",
+        "tcgplayer"
     ]
 }
