@@ -1,9 +1,9 @@
 # Pokemon Card Market
 
 - [Pokemon Card Market](#pokemon-card-market)
-- [Stack](#stack)
+- [Tech Stack \& Features](#tech-stack--features)
 
-# Stack
+# Tech Stack & Features
 
 - Nuxt
 - Pinia(State Management)
@@ -15,3 +15,5 @@
   - Lint-staged
   - Commitlint
   - Husky
+- Pagination
+- Filter

@@ -26,18 +26,14 @@
 </script>
 
 <template>
-  <div class="flex justify-center space-x-6">
-    <p>{{ pageQuery.page }}</p>
-    <p>{{ pageQuery.size }}</p>
-    <p>{{ pageQuery.totalPage }}</p>
-  </div>
   <Pagination
     v-slot="{ page }"
     :total="pageQuery.count"
-    :items-per-page="20"
+    :items-per-page="pageQuery.size"
     :sibling-count="1"
     show-edges
     :default-page="pageQuery.page"
+    class="flex justify-center"
   >
     <PaginationList v-slot="{ items }" class="flex items-center gap-1">
       <PaginationFirst @click="goToPage(1)" />

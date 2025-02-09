@@ -4,6 +4,7 @@
   const pokemonRarity = usePokemonRarity();
   const pokemonTypes = usePokemonType();
 
+  // TODO: make default select to ""
   const pokemonSetOptions = useState<{ label: string; value: string }[]>('pokemonSets', () => []);
   const pokemonRaritiesOptions = useState<{ label: string; value: string }[]>(
     'pokemonRarities',
@@ -22,7 +23,7 @@
     $fetch(POKE_API.setNames)
   );
   pokemonSetOptions.value =
-    setRes.data?.value?.data?.map((e) => ({ label: e.name || '', value: e.name || '' })) || [];
+    setRes.data?.value?.data?.map((e) => ({ label: e.name || '', value: e.id || '' })) || [];
   pokemonSets.updateSets(setRes.data?.value?.data?.map((e) => e.name || '').sort() || []);
 
   const raritiesRes = await useAsyncData<{ data: string[] }>('pokemonRarities', () =>
