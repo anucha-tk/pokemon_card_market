@@ -32,6 +32,10 @@ interface Legalities {
 
 interface PokemonCardApiResponse {
   data?: Pokemon[];
+  page?: number;
+  pageSize?: number;
+  count?: number;
+  totalCount?: number;
 }
 
 interface Pokemon {
