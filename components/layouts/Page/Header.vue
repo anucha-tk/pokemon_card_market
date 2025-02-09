@@ -8,9 +8,9 @@
 <template>
   <nav id="header" class="space-y-6">
     <div id="title" class="flex items-center justify-between">
-      <h1 id="" class="text-2xl font-semibold dark:text-white">Pokemon market</h1>
+      <h1 id="logo_name" class="text-2xl font-semibold dark:text-white">Pokemon market</h1>
       <div id="tools_bar" class="flex space-x-4">
-        <div id="search" class="relative flex w-full max-w-sm items-center">
+        <div id="search" class="relative hidden w-full max-w-sm items-center md:flex">
           <Input
             id="search"
             type="text"
@@ -27,6 +27,20 @@
           </Button>
         </div>
         <LayoutsPageThemeSwitch />
+      </div>
+    </div>
+    <!-- search input mobile screen -->
+    <div id="search_input_mobile" class="flex h-12 w-full md:hidden">
+      <div id="search" class="relative flex w-full max-w-sm items-center sm:hidden">
+        <Input
+          id="search"
+          type="text"
+          placeholder="Search By Name"
+          class="h-full w-full border-[#393C49] pl-12 placeholder:text-sm placeholder:font-normal dark:bg-[#252735] placeholder:dark:text-[#ABBBC2]"
+        />
+        <span class="absolute inset-y-0 start-0 flex items-center justify-center p-3.5">
+          <Search class="size-5 dark:text-white" />
+        </span>
       </div>
     </div>
     <div id="menu">
