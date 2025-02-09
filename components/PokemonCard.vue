@@ -13,9 +13,7 @@
     <section id="poke_img" class="relative flex w-full justify-center">
       <NuxtImg
         :src="p.images?.small"
-        width="194"
-        height="270"
-        class="relative z-10 drop-shadow-lg"
+        class="relative z-10 h-[270px] drop-shadow-lg md:h-52 lg:h-[142px]"
       />
     </section>
 
