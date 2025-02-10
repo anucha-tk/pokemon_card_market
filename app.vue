@@ -1,10 +1,14 @@
 <script lang="ts" setup>
+  import { usePageSizeUpdater } from '@/stores/pageQuery';
+
   const { awesome } = useAppConfig();
 
   useHead({
     title: awesome.name,
     titleTemplate: `%s - ${awesome.name}`,
   });
+
+  usePageSizeUpdater();
 </script>
 
 <template>

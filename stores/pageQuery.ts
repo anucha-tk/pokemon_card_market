@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@vueuse/core';
 import { defineStore } from 'pinia';
 
 export const usePageQuery = defineStore('page_query', {
@@ -32,3 +33,19 @@ export const usePageQuery = defineStore('page_query', {
     },
   },
 });
+
+export function usePageSizeUpdater() {
+  const pageQuery = usePageQuery();
+  const isMobile = useMediaQuery('(max-width: 640px)');
+  const isTablet = useMediaQuery('(min-width: 641px) and (max-width: 1024px)');
+
+  watch(
+    [isMobile, isTablet],
+    () => {
+      if (isMobile.value) pageQuery.setSize(5);
+      else if (isTablet.value) pageQuery.setSize(10);
+      else pageQuery.setSize(20);
+    },
+    { immediate: true }
+  );
+}

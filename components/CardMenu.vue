@@ -45,7 +45,7 @@
   );
 
   watch(
-    () => pageQuery.page,
+    () => [pageQuery.page, pageQuery.size],
     () => {
       refresh();
     }
