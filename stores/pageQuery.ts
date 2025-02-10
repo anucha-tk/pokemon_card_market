@@ -21,6 +21,16 @@ export const usePageQuery = defineStore('page_query', {
     setTotalPage(totalPage: number) {
       this.totalPage = totalPage;
     },
+    nextPage() {
+      if (this.page + 1 <= this.totalPage) {
+        this.page++;
+      }
+    },
+    prevPage() {
+      if (this.page - 1 >= 1) {
+        this.page--;
+      }
+    },
   },
 });
 

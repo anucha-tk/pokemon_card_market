@@ -7,6 +7,7 @@
   }>();
   const priceMarket = computed(() => p.tcgplayer?.prices?.holofoil?.market || 'N/A');
   const cardTotal = computed(() => p.set.total || 'N/A');
+  const cartStore = useCart();
 </script>
 
 <template>
@@ -28,14 +29,24 @@
         $ {{ priceMarket }} • {{ cardTotal }} Cards
       </p>
       <!-- Add to Cart Button -->
+      <!-- NOTE: we disable button when not have both id and price make sure cartStore work correctly -->
       <button
-        :disabled="priceMarket === 'N/A'"
+        :disabled="priceMarket === 'N/A' || !p.id"
         :class="
           clsx(
             'flex min-h-[41px] w-full items-center justify-center gap-2 rounded-[8px] bg-primary py-2 text-white hover:bg-gray-700 dark:bg-[#312f3c] dark:hover:bg-[#474651]',
             priceMarket === 'N/A' &&
+              !p.id &&
               'pointer-events-none hover:bg-[#ABBBC2] dark:hover:bg-[#312f3c]'
           )
+        "
+        @click="
+          cartStore.addCard(p.id!, {
+            name: p.name || '',
+            price: p.tcgplayer?.prices?.holofoil?.market!,
+            img: p.images?.small || '',
+            totalCard: p.set.total || 0,
+          })
         "
       >
         <ShoppingBag

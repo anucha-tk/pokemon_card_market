@@ -119,3 +119,10 @@ interface Attack {
   damage?: string;
   text?: string;
 }
+interface CartCard {
+  name: string;
+  qty: number;
+  price: number;
+  img: string;
+  totalCard: number;
+}
