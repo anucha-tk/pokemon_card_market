@@ -21,7 +21,7 @@
 
     <!-- Background Card Section -->
     <div
-      class="relative -mt-10 flex h-full w-full flex-col justify-between rounded-lg bg-slate-200 p-4 text-center dark:bg-[#1F1D2B]"
+      class="relative -mt-10 flex h-full w-full max-w-sm flex-col justify-between gap-2 rounded-[16px] bg-slate-200 p-4 text-center dark:bg-[#1F1D2B] md:max-w-none"
     >
       <p class="pt-10 font-semibold dark:text-white">{{ p.name }}</p>
       <p class="text-sm font-normal dark:text-gray-400">
@@ -32,7 +32,7 @@
         :disabled="priceMarket === 'N/A'"
         :class="
           clsx(
-            'mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-2 text-white hover:bg-gray-700 dark:bg-[#312f3c] dark:hover:bg-[#474651]',
+            'flex min-h-[41px] w-full items-center justify-center gap-2 rounded-[8px] bg-primary py-2 text-white hover:bg-gray-700 dark:bg-[#312f3c] dark:hover:bg-[#474651]',
             priceMarket === 'N/A' &&
               'pointer-events-none hover:bg-[#ABBBC2] dark:hover:bg-[#312f3c]'
           )

@@ -44,7 +44,7 @@
     </div>
     <!-- search input mobile screen -->
     <div id="search_input_mobile" class="flex h-12 w-full md:hidden">
-      <div id="search" class="relative flex w-full max-w-sm items-center sm:hidden">
+      <div id="search" class="relative flex w-full items-center sm:hidden">
         <Input
           id="search"
           type="text"
