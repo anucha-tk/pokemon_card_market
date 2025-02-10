@@ -1,60 +1,47 @@
 <script setup lang="ts">
   import { POKE_API } from '~/constants/api_constant';
+
   const pageQuery = usePageQuery();
   const filterStore = useFilters();
+  const { page, size } = storeToRefs(pageQuery);
+
   const filters = ref({ name: '', set: '', rarity: '', type: '' });
 
   const queryFilter = computed(() => Object.values(filters.value).filter(Boolean).join(' '));
 
-  const { data, refresh } = await useAsyncData<PokemonCardApiResponse>('posts', () =>
-    $fetch(POKE_API.pokemons, {
-      params: {
-        page: pageQuery.page,
-        pageSize: pageQuery.size,
-        q: queryFilter.value || undefined,
-      },
-    })
-  );
-  watch(
-    () => filterStore.search,
-    (newSearch) => {
-      filters.value.name = newSearch ? `name:${newSearch}` : '';
-      pageQuery.setPage(1);
-    }
-  );
-  watch(
-    () => filterStore.set,
-    (newSet) => {
-      filters.value.set = newSet ? `set.id:${newSet}` : '';
-      pageQuery.setPage(1);
-    }
-  );
-  watch(
-    () => filterStore.rarity,
-    (newRarity) => {
-      filters.value.rarity = newRarity ? `rarity:"${newRarity}"` : '';
-      pageQuery.setPage(1);
-    }
-  );
-  watch(
-    () => filterStore.type,
-    (newType) => {
-      filters.value.type = newType ? `types:"${newType}"` : '';
-      pageQuery.setPage(1);
-    }
+  const { data } = await useAsyncData<PokemonCardApiResponse>(
+    'posts',
+    () =>
+      $fetch(POKE_API.pokemons, {
+        params: {
+          page: page.value,
+          pageSize: size.value,
+          q: queryFilter.value || undefined,
+        },
+      }),
+    { watch: [page, size, queryFilter] }
   );
 
-  watch(
-    () => [pageQuery.page, pageQuery.size],
-    () => {
-      refresh();
-    }
-  );
-  watch(queryFilter, () => {
-    refresh();
-  });
+  const pokemons = computed(() => data.value?.data || []);
 
-  const pokemons = ref(data.value?.data || []);
+  watch(
+    [
+      () => filterStore.search,
+      () => filterStore.set,
+      () => filterStore.rarity,
+      () => filterStore.type,
+    ],
+    ([search, set, rarity, type]) => {
+      filters.value = {
+        name: search ? `name:${search}` : '',
+        set: set ? `set.id:${set}` : '',
+        rarity: rarity ? `rarity:"${rarity}"` : '',
+        type: type ? `types:"${type}"` : '',
+      };
+      pageQuery.setPage(1);
+    },
+    { immediate: true }
+  );
 
   watch(
     data,
@@ -66,10 +53,6 @@
     },
     { immediate: true }
   );
-
-  watch(data, () => {
-    pokemons.value = data.value?.data || [];
-  });
 </script>
 
 <template>

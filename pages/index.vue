@@ -5,6 +5,8 @@
 <template>
   <section id="home_page_menu" class="flex flex-col space-y-6">
     <LayoutsPageMenu />
-    <CardMenu />
+    <ClientOnly>
+      <CardMenu />
+    </ClientOnly>
   </section>
 </template>
