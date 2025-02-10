@@ -76,6 +76,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: Poppins;
   }
   .layout {
     /* 1100px */

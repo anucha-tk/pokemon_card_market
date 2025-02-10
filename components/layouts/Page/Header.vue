@@ -2,7 +2,7 @@
   import { Input } from '@/components/ui/input';
   import { Separator } from '@/components/ui/separator';
   import { useDebounceFn } from '@vueuse/core';
-  import { ShoppingBag, Search } from 'lucide-vue-next';
+  import { Search } from 'lucide-vue-next';
 
   const search = ref('');
   const filtersStore = useFilters();
@@ -34,11 +34,9 @@
             <Search class="size-5 dark:text-white" />
           </span>
         </div>
-        <div class="h-12 w-12">
-          <Button class="flex h-full w-full items-center justify-center bg-[#EA7C69]">
-            <ShoppingBag style="width: 24px; height: 24px" class="text-white" />
-          </Button>
-        </div>
+        <ClientOnly>
+          <AppCart />
+        </ClientOnly>
         <LayoutsPageThemeSwitch />
       </div>
     </div>
