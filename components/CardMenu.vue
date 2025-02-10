@@ -17,6 +17,7 @@
           page: page.value,
           pageSize: size.value,
           q: queryFilter.value || undefined,
+          select: 'id,name,set,tcgplayer,images',
         },
       }),
     { watch: [page, size, queryFilter] }
