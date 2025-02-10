@@ -25,9 +25,13 @@
       <p class="text-sm font-normal text-gray-400">$ {{ priceMarket }} • {{ cardTotal }} Cards</p>
       <!-- Add to Cart Button -->
       <button
-        class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-gray-700 py-2 text-white"
+        :disabled="priceMarket === 'N/A'"
+        class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-[#312F3C] py-2 text-white hover:bg-[#474651] disabled:text-[#83828A] disabled:hover:bg-[#312F3C]"
       >
-        <ShoppingBag style="width: 14px; height: 14px" class="text-white" />
+        <ShoppingBag
+          style="width: 14px; height: 14px"
+          :class="priceMarket === 'N/A' ? 'text-[#82838B]' : 'text-white'"
+        />
         <span class="text-sm font-medium">Add to cart</span>
       </button>
     </div>
