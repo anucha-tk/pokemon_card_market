@@ -9,7 +9,7 @@
 
   const queryFilter = computed(() => Object.values(filters.value).filter(Boolean).join(' '));
 
-  const { data } = await useAsyncData<PokemonCardApiResponse>(
+  const { data, status } = await useAsyncData<PokemonCardApiResponse>(
     'posts',
     () =>
       $fetch(POKE_API.pokemons, {
@@ -56,7 +56,9 @@
 </script>
 
 <template>
+  <AppSpinner v-if="status === 'pending'" />
   <div
+    v-else
     id="container_card_menu"
     class="grid gap-y-6 md:grid md:grid-cols-3 md:gap-x-4 lg:grid-cols-6"
   >
