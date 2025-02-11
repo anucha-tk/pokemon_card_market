@@ -1,5 +1,7 @@
 <script setup lang="ts">
   import { ShoppingBag } from 'lucide-vue-next';
+  import { ScrollArea } from '@/components/ui/scroll-area';
+
   import { Separator } from '@/components/ui/separator';
   import {
     Sheet,
@@ -8,7 +10,6 @@
     SheetTitle,
     SheetTrigger,
     SheetDescription,
-    SheetFooter,
     SheetClose,
   } from '@/components/ui/sheet';
   import AppCartCard from './AppCartCard.vue';
@@ -44,19 +45,29 @@
           <p>Price</p>
         </div>
       </SheetHeader>
-      <div id="cart_container_contain" class="flex w-full flex-col space-y-6">
+      <div id="cart_container_contain" class="flex h-3/5 w-full flex-col space-y-6">
         <Separator class="bg-[#363946]" />
-        <div id="cart_contain" class="flex flex-col space-y-6">
-          <AppCartCard v-for="(c, i) in cartStore.cards" :key="`${c.name}_${i}`" :c="c" :i="i" />
+        <ScrollArea class="w-full">
+          <div id="cart_contain" class="flex flex-col space-y-6">
+            <AppCartCard v-for="(c, i) in cartStore.cards" :key="`${c.name}_${i}`" :c="c" :i="i" />
+          </div>
+        </ScrollArea>
+      </div>
+      <div id="cart_total" class="w-full py-6">
+        <div class="flex flex-col space-y-4">
+          <div class="flex justify-between">
+            <p class="text-[#ABBBC2]">Total card amount</p>
+            <p class="text-lg">{{ cartStore.totalCartCard }}</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-[#ABBBC2]">Total price</p>
+            <p class="text-lg">$&nbsp;{{ cartStore.totalPrice }}</p>
+          </div>
+          <SheetClose as-child>
+            <Button class="h-12 bg-[#EA7C69] text-white">Continue to Payment</Button>
+          </SheetClose>
         </div>
       </div>
-      <SheetFooter id="cart_total" class="sticky">
-        <p>cardTotal: {{ cartStore.totalCartCard }}</p>
-        <p>priceTotal: {{ cartStore.totalPrice }}</p>
-        <SheetClose as-child>
-          <Button type="submit"> Save changes </Button>
-        </SheetClose>
-      </SheetFooter>
     </SheetContent>
   </Sheet>
 </template>

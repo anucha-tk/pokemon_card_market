@@ -23,6 +23,7 @@
 - Filter(set, rarity, type)
 - Search(debounced 2000ms)
 - Screen detect page size (mobile=5, tablet=10, desktop=20)
+- Cart
 
 # TODO
 
