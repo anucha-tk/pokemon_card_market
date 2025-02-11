@@ -14,10 +14,7 @@
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button
-        variant="outline"
-        class="hidden h-12 w-12 border-0 bg-transparent shadow-none md:flex"
-      >
+      <Button variant="outline" class="flex h-12 w-12 border-0 bg-transparent shadow-none">
         <Icon
           icon="radix-icons:moon"
           class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"

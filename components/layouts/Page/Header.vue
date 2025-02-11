@@ -20,7 +20,17 @@
 <template>
   <nav id="header" class="space-y-6">
     <div id="title" class="flex items-center justify-between">
-      <h1 id="logo_name" class="text-2xl font-semibold dark:text-white">Pokemon market</h1>
+      <div class="flex items-center justify-center">
+        <!--  eslint-disable-next-line vue/html-self-closing -->
+        <img
+          src="/img/poke_ball.png"
+          height="50"
+          width="50"
+          alt="poke_ball"
+          class="hidden pr-4 md:block"
+        />
+        <h1 id="logo_name" class="text-2xl font-semibold dark:text-white">Pokemon market</h1>
+      </div>
       <div id="tools_bar" class="flex space-x-4">
         <div id="search" class="relative hidden w-full max-w-sm items-center md:flex">
           <Input
@@ -45,7 +55,8 @@
       <div id="search" class="relative flex w-full items-center sm:hidden">
         <Input
           id="search"
-          type="text"
+          v-model="search"
+          type="search"
           placeholder="Search By Name"
           class="h-full w-full border-[#393C49] pl-12 placeholder:text-sm placeholder:font-normal dark:bg-[#252735] placeholder:dark:text-[#ABBBC2]"
         />
