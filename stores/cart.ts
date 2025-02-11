@@ -40,5 +40,10 @@ export const useCart = defineStore('cart', {
         }
       }
     },
+    clearAllCard() {
+      this.cards = {};
+      this.totalPrice = 0;
+      this.totalCartCard = 0;
+    },
   },
 });

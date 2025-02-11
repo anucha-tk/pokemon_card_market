@@ -28,14 +28,16 @@
     </SheetTrigger>
     <SheetContent
       id="cart_container"
-      class="flex w-full flex-col items-start px-5 py-6 md:w-auto md:min-w-[400px] lg:min-w-[500px]"
+      class="flex w-full flex-col items-start px-5 py-6 md:w-auto md:min-w-[400px]"
     >
       <SheetHeader id="cart_header" class="flex w-full space-y-5">
         <div id="header_content" class="flex items-center justify-between space-x-2">
           <div id="header" class="flex flex-col items-start space-y-1">
             <SheetTitle class="text-2xl font-semibold">Cart</SheetTitle>
-            <SheetDescription class="text-sm font-normal text-[#ABBBC2] underline">
-              clear all
+            <SheetDescription class="text-sm font-normal text-[#ABBBC2]">
+              <Button variant="link" class="p-0" @click="cartStore.clearAllCard()">
+                Clear all
+              </Button>
             </SheetDescription>
           </div>
         </div>
