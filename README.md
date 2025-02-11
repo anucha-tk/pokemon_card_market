@@ -27,6 +27,7 @@
 
 # TODO
 
+- Add tag badge information below card
 - Cache request like TanStack Query
 
 # Source Pokemon TCG API

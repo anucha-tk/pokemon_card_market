@@ -61,7 +61,7 @@
   <div
     v-else
     id="container_card_menu"
-    class="grid gap-y-6 md:grid md:grid-cols-3 md:gap-x-4 lg:grid-cols-5 xl:grid-cols-6"
+    class="grid gap-y-6 px-5 md:grid md:grid-cols-3 md:gap-x-4 lg:grid-cols-5 xl:grid-cols-6"
   >
     <PokemonCard v-for="(p, i) in pokemons" id="Card_menu" :key="i" :p="p" />
   </div>

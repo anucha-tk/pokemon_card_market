@@ -20,7 +20,7 @@
         <NuxtImg id="img" :src="c.img" class="h-40" />
         <div id="name_n_price" class="flex flex-col space-x-1">
           <p class="text-xl font-medium">{{ c.name }}</p>
-          <p class="text-gray-400">$ {{ c.price }}</p>
+          <p class="text-gray-500 dark:text-gray-400">$ {{ c.price }}</p>
         </div>
       </div>
       <p id="totalPrice">$&nbsp;{{ totalPrice }}</p>
@@ -30,7 +30,7 @@
       <Button
         variant="outline"
         size="icon"
-        class="h-full w-20 bg-[#312F3C]"
+        class="h-full w-20 bg-[#ABBBC2] dark:bg-[#312F3C]"
         @click="cartStore.decrementCard(i)"
       >
         <Minus style="width: 24px; height: 24px" />
@@ -39,7 +39,7 @@
         disabled
         variant="outline"
         size="icon"
-        class="h-full w-full bg-[#312F3C] text-lg font-medium disabled:text-white disabled:opacity-100"
+        class="h-full w-full bg-[#ABBBC2] text-lg font-medium disabled:opacity-100 dark:bg-[#312F3C] disabled:dark:text-white"
       >
         {{ c.qty }}
       </Button>
@@ -47,7 +47,7 @@
         :disabled="c.qty === c.totalCard"
         variant="outline"
         size="icon"
-        class="h-full w-20 bg-[#312F3C]"
+        class="h-full w-20 bg-[#ABBBC2] dark:bg-[#312F3C]"
         @click="cartStore.incrementCard(i)"
       >
         <Plus style="width: 24px; height: 24px" />

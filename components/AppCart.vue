@@ -58,11 +58,11 @@
       <div id="cart_total" class="w-full py-6">
         <div class="flex flex-col space-y-4">
           <div class="flex justify-between">
-            <p class="text-[#ABBBC2]">Total card amount</p>
+            <p class="dark:text-[#ABBBC2]">Total card amount</p>
             <p class="text-lg">{{ cartStore.totalCartCard }}</p>
           </div>
           <div class="flex justify-between">
-            <p class="text-[#ABBBC2]">Total price</p>
+            <p class="dark:text-[#ABBBC2]">Total price</p>
             <p class="text-lg">$&nbsp;{{ cartStore.totalPrice }}</p>
           </div>
           <SheetClose as-child>

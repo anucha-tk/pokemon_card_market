@@ -4,8 +4,8 @@
   import { useDebounceFn } from '@vueuse/core';
   import { Search } from 'lucide-vue-next';
 
-  const search = ref('');
   const filtersStore = useFilters();
+  const { search } = storeToRefs(filtersStore);
   const debouncedFn = useDebounceFn(() => {
     filtersStore.updateSearch(search.value);
   }, 2000);

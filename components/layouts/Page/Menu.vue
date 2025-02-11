@@ -69,6 +69,7 @@
     filterStore.updateSet('');
     filterStore.updateRarity('');
     filterStore.updateType('');
+    filterStore.updateSearch('');
 
     selectedSet.value = '';
     selectedRarity.value = '';

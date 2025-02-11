@@ -29,6 +29,7 @@
 
 <template>
   <Pagination
+    id="app_pagination"
     v-slot="{ page }"
     :total="totalCount"
     :items-per-page="pageQuery.size"
@@ -38,7 +39,7 @@
     class="flex justify-center"
     :page="currPage"
   >
-    <PaginationList v-slot="{ items }" class="flex items-center gap-1">
+    <PaginationList v-slot="{ items }" class="flex w-full items-center justify-center gap-1">
       <PaginationFirst @click="goToPage(1)" />
       <PaginationPrev @click="prevPage" />
 
