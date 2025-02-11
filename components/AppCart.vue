@@ -47,7 +47,7 @@
           <p>Price</p>
         </div>
       </SheetHeader>
-      <div id="cart_container_contain" class="flex h-3/5 w-full flex-col space-y-6">
+      <div id="cart_container_contain" class="flex h-3/5 w-full flex-grow flex-col space-y-6">
         <Separator class="bg-[#363946]" />
         <ScrollArea class="w-full">
           <div id="cart_contain" class="flex flex-col space-y-6">
